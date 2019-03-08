@@ -1,0 +1,34 @@
+﻿[
+  {
+    "outputFile": "themes/theme01/assets/css/CachChayQC.css",
+    "inputFile": "themes/theme01/assets/css/CachChayQC.scss"
+  },
+  {
+    "outputFile": "themes/theme01/assets/css/CapNhapThongTinChienDich.css",
+    "inputFile": "themes/theme01/assets/css/CapNhapThongTinChienDich.scss"
+  },
+  {
+    "outputFile": "themes/theme01/assets/css/DangKy.css",
+    "inputFile": "themes/theme01/assets/css/DangKy.scss"
+  },
+  {
+    "outputFile": "themes/theme01/assets/css/FAQ.css",
+    "inputFile": "themes/theme01/assets/css/FAQ.scss"
+  },
+  {
+    "outputFile": "themes/theme01/assets/css/HuongDan.css",
+    "inputFile": "themes/theme01/assets/css/HuongDan.scss"
+  },
+  {
+    "outputFile": "themes/theme01/assets/css/TinhNangMoi.css",
+    "inputFile": "themes/theme01/assets/css/TinhNangMoi.scss"
+  },
+  {
+    "outputFile": "themes/theme01/assets/css/SuKien.css",
+    "inputFile": "themes/theme01/assets/css/SuKien.scss"
+  },
+  {
+    "outputFile": "themes/theme01/assets/css/Home.css",
+    "inputFile": "themes/theme01/assets/css/Home.scss"
+  }
+]
