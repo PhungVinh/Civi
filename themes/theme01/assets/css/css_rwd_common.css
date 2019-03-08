@@ -1,0 +1,661 @@
+﻿/*
+    Có nhiều độ phân giải theo các màn hình từ smartphone, tablet, pc
+    320, 375, 414, 480, 568, 601, 640, 667, 736, 768, 800, 906, 1024, 1200, 1280, 1360, 1366 trở lên
+    Lấy chuẩn nhỏ nhất là 320 cho trường hợp smartphone dựng dọc rồi chia theo khoảng
+
+*/
+/*================Tham khảo cách viết từ bootstrap================*/
+/*Bắt đầu từ mobile, tức css viết ngoài cùng là css cho trường hợp mobile dựng dọc - thường là 1 cột, padding left right 15px*/
+
+@media (min-width:480px){
+    /*Bắt đầu từ 480 tính tương ứng với trường hợp mobile quay ngang - thường là 2 cột*/
+}
+@media (min-width:768px){
+    /*Bắt đầu từ 768 tính tương ứng với trường hợp tablet dựng dọc - thường là 2 hoặc 3 cột*/
+}
+@media (min-width:992px){
+    /*Bắt đầu từ 992 tính tương ứng với trường hợp tablet quay ngang - thường là 3 hoặc 4 cột*/
+}
+@media (min-width:1200px){
+    /*Bắt đầu từ 1200 tính tương ứng với trường hợp lớn hơn tablet - bắt đầu của PC - thường là 4 hoặc 5 cột*/
+}
+
+/*Thêm css cho khối ảnh*/
+/*====================Chi tiết bài viết====================*/
+.contentview{line-height:21px;text-align:justify}
+.contentview table{max-width:100% !important;table-layout:fixed}
+.contentview table{border-collapse:collapse}
+.contentview table td,
+.contentview table th{padding:5px}
+.contentview img{height:auto !important;max-width:100% !important}
+.emptyresult,
+.emptyResult{min-height:100px;padding-top:20px;text-align:center}
+.contentview p{margin-left:0 !important}
+
+/*================Các thông số mặc định để ở phần khung ảnh================*/
+.khungAnh{position:relative;z-index:1}
+.khungAnh:before{content:"";display:block;padding-bottom:66%}
+.khungAnhCrop,
+.khungAnhCrop0{display:inline-block;height:100%;left:0;overflow:hidden;position:absolute;text-align:center;top:0;width:100%;z-index:1}
+
+
+/*================Trường hợp ảnh lọt trong khung================*/
+.khungAnhCrop0 img{left:50%;max-height:100%;max-width:100%;position:absolute;top:50%;transform:translate(-50%,-50%);z-index:1}
+.khungAnhCrop0 img{-moz-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}
+/*transform phải viết thêm cho các trình duyệt cũ*/
+
+/*================Trường hợp ảnh tràn lề khi chưa gắn class xác định ảnh dạng ngang hay dọc================*/
+.khungAnhCrop img{left:50%;max-height:150%;max-width:150%;position:absolute;top:50%;transform:translate(-50%,-50%);z-index:1}
+.khungAnhCrop img{-moz-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}
+
+/*Ảnh ngang (width > height) --> gắn height 100%, width sẽ bị lấp hai bên*/
+.khungAnhCrop img.wide{height:100%;max-width:none}
+
+/*Ảnh dọc (width < height) --> gắn width 100%, height sẽ bị lấp phần trên dưới*/
+.khungAnhCrop img.tall{max-height:none;width:100%}
+
+
+/*================Hiệu ứng zoom ảnh khi hover================*/
+.khungAnhCrop img,
+.khungAnhCrop0 img{-moz-transition:all 0.5s ease 0s;-o-transition:all 0.5s ease 0s;-webkit-transition:all 0.5s ease 0s;transition:all 0.5s ease 0s}
+
+.khungAnhCrop:hover img{transform:translate(-50%,-50%) scale(1.1)}
+.khungAnhCrop:hover img{-moz-transform:translate(-50%,-50%) scale(1.1);-o-transform:translate(-50%,-50%) scale(1.1);-webkit-transform:translate(-50%,-50%) scale(1.1);transform:translate(-50%,-50%) scale(1.1)}
+
+.khungAnhCrop0:hover img{transform:translate(-50%,-50%) scale(1.1)}
+.khungAnhCrop0:hover img{-moz-transform:translate(-50%,-50%) scale(1.1);-o-transform:translate(-50%,-50%) scale(1.1);-webkit-transform:translate(-50%,-50%) scale(1.1);transform:translate(-50%,-50%) scale(1.1)}
+
+/*Thêm css cho khối ảnh - end*/
+
+
+/*Khối chứa video youtube*/
+.youtubeIframeBox{height:auto;position:relative;z-index:1}
+.youtubeIframeBox:before{padding-bottom:56.25%;content:"";display:block}
+.youtubeIframeBox iframe{position:absolute;z-index:1;top:0;left:0;width:100% !important;height:100% !important}
+
+.dn{display:none}
+
+/*================Đối với Tất Thành code bản pc trước, vì vậy sẽ viết ngược từ to về bé như sau================*/
+/*css mặc định dành cho trường hợp pc 1360, 1366px trở lên*/
+
+@media (max-width:1359px){
+    /*Bắt đầu từ 1200 tính tương ứng với trường hợp lớn hơn tablet - bắt đầu của PC - thường là 4 hoặc 5 cột*/
+}
+@media (max-width:1199px){
+    /*Bắt đầu từ 992 tính tương ứng với trường hợp tablet quay ngang - thường là 3 hoặc 4 cột*/
+
+    /*Với làm responsive sẽ để width theo % nên để các khối về box-sizing:border-box*/
+    *{min-width:0;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+    body{min-width:0}
+    
+    /*Xử lý cho các khối trên pc thì hiện, trên tablet thì ẩn hoặc ngược lại*/
+    .dntablet-l,
+    .dnTablet-l,
+    .dntb-l{display:none !important}
+    .dbtablet-l,
+    .dbTablet-l,
+    .dbtb-l{display:block}
+    .dibtablet-l,
+    .dibTablet-l,
+    .dibtb-l{display:inline-block !important}
+
+    /*Hủy float*/
+    .fntb-l,
+    .fntablet-l,
+    .fnTablet-l{float:none}
+
+    .fntb-l-im,
+    .fntablet-l-im,
+    .fnTablet-l-im{float:none !important}
+
+    .fltb-l,
+    .fltablet-l,
+    .flTablet-l{float:left}
+    
+    /*Text-align*/
+    .tactb-l,
+    .tactablet-l,
+    .tacTablet-l{text-align:center}
+    .taltb-l,
+    .taltablet-l,
+    .talTablet-l{text-align:left}
+    .tartb-l,
+    .tartablet-l,
+    .tarTablet-l{text-align:left}
+
+    /*Margin, padding 0*/
+    .motb-l,
+    .motablet-l,
+    .moTablet-l{margin:0}
+    .motb-l-im,
+    .motablet-l-im,
+    .moTablet-l-im{margin:0 !important}
+
+    .matb-l,
+    .matablet-l,
+    .maTablet-l{margin:auto}
+    .matb-l-im,
+    .matablet-l-im,
+    .maTablet-l-im{margin:auto !important}
+
+    .potb-l,
+    .potablet-l,
+    .poTablet-l{padding:0}
+    .potb-l-im,
+    .potablet-l-im,
+    .poTablet-l-im{padding:0 !important}
+
+
+    /*Height auto*/
+    .hautotb-l,
+    .hautotablet-l,
+    .hautoTablet-l{height:auto}
+    .hautotb-l-im,
+    .hautotablet-l-im,
+    .hautoTablet-l-im{height:auto !important}
+
+    /*Làm viền trái, phải thay margin*/
+    .b10tb-l-bd0mb:nth-child(odd){border-right:solid 10px rgba(0,0,0,0);clear:left}
+    .b10tb-l-bd0mb:nth-child(even){border-left:solid 10px rgba(0,0,0,0);clear:right}
+
+    .b20tb-l-bd0mb:nth-child(odd){border-right:solid 20px rgba(0,0,0,0);clear:left}
+    .b20tb-l-bd0mb:nth-child(even){border-left:solid 20px rgba(0,0,0,0);clear:right}
+
+    .b40tb-l-bd0mb:nth-child(odd){border-right:solid 40px rgba(0,0,0,0);clear:left}
+    .b40tb-l-bd0mb:nth-child(even){border-left:solid 40px rgba(0,0,0,0);clear:right}
+
+    .bl20tb-bd0mb{border-left:solid 20px rgba(0,0,0,0)}
+
+    .pb10tb-l{padding-bottom:10px}
+    .pb20tb-l{padding-bottom:20px}
+    .pb30tb-l{padding-bottom:30px}
+
+    .pt10tb-l{padding-top:10px}
+    .pt20tb-l{padding-top:20px}
+    .pt30tb-l{padding-top:30px}
+
+    /*Khối bao tạo cách lề hai bên màn hình*/
+    .container{padding:0 20px !important;width:auto}
+
+    /*Các khối chia chiều rộng trên tablet - dựa theo bootstrap 100% width có thể chia 12 cột*/
+    .col-tb-l-1{width:8.3333%}
+    .col-tb-l-2{width:16.6667%}
+    .col-tb-l-3{width:25%}
+    .col-tb-l-4{width:33.3333%}
+    .col-tb-l-5{width:41.6667%}
+    .col-tb-l-6{width:50%}
+    .col-tb-l-7{width:58.3333%}
+    .col-tb-l-8{width:66.6667%}
+    .col-tb-l-9{width:75%}
+    .col-tb-l-10{width:83.3333%}
+    .col-tb-l-11{width:91.6667%}
+    .col-tb-l-12{width:100%}
+
+    /*Các khối chia chiều rộng trên tablet - dựa theo bootstrap 100% width có thể chia 12 cột - có thêm important*/
+    .col-tb-l-1-im{width:8.3333% !important}
+    .col-tb-l-2-im{width:16.6667% !important}
+    .col-tb-l-3-im{width:25% !important}
+    .col-tb-l-4-im{width:33.3333% !important}
+    .col-tb-l-5-im{width:41.6667% !important}
+    .col-tb-l-6-im{width:50% !important}
+    .col-tb-l-7-im{width:58.3333% !important}
+    .col-tb-l-8-im{width:66.6667% !important}
+    .col-tb-l-9-im{width:75% !important}
+    .col-tb-l-10-im{width:83.3333% !important}
+    .col-tb-l-11-im{width:91.6667% !important}
+    .col-tb-l-12-im{width:100% !important}
+
+    /*Các khối chia chiều rộng trên tablet - dựa theo bootstrap 100% width có thể chia 12 cột - có thêm margin 0 important*/
+    .col-tb-l-1-mo{width:8.3333%;margin:0 !important}
+    .col-tb-l-2-mo{width:16.6667%;margin:0 !important}
+    .col-tb-l-3-mo{width:25%;margin:0 !important}
+    .col-tb-l-4-mo{width:33.3333%;margin:0 !important}
+    .col-tb-l-5-mo{width:41.6667%;margin:0 !important}
+    .col-tb-l-6-mo{width:50%;margin:0 !important}
+    .col-tb-l-7-mo{width:58.3333%;margin:0 !important}
+    .col-tb-l-8-mo{width:66.6667%;margin:0 !important}
+    .col-tb-l-9-mo{width:75%;margin:0 !important}
+    .col-tb-l-10-mo{width:83.3333%;margin:0 !important}
+    .col-tb-l-11-mo{width:91.6667%;margin:0 !important}
+    .col-tb-l-12-mo{width:100%;margin:0 !important}
+
+    .w100o{width:100% !important;float:none !important;margin:0 !important}
+    .w100o-tb-l,
+    .w100otb-l,
+    .w100oTb-l{width:100% !important;float:none !important}
+    
+    /*Khối nội dung bài viết*/
+    .contentview iframe,
+    .contentView iframe,
+    .ContentView iframe{max-width:100% !important;height:60vw}
+    .contentview *,
+    .contentView *,
+    .ContentView *{margin-left:0 !important;font-size:14px !important;font-family:Arial !important}
+    .contentview p,
+    .contentView p,
+    .ContentView p{margin-top:0 !important}
+
+    /*Khối chứa video youtube*/
+    .youtubeIframeBox{height:auto;position:relative;z-index:1}
+    .youtubeIframeBox:before{padding-bottom:56.25%;content:"";display:block}
+    .youtubeIframeBox iframe{position:absolute;z-index:1;top:0;left:0;width:100% !important;height:100% !important}
+}
+
+
+@media (max-width:991px){
+    /*Bắt đầu từ 768 tính tương ứng với trường hợp tablet dựng dọc - thường là 2 hoặc 3 cột*/
+    /*Xử lý cho các khối trên pc thì hiện, trên tablet thì ẩn hoặc ngược lại*/
+    .dntablet,
+    .dnTablet,
+    .dntb{display:none !important}
+    .dbtablet,
+    .dbTablet,
+    .dbtb{display:block}
+    .dibtablet,
+    .dibTablet,
+    .dibtb{display:inline-block !important}
+
+    /*Hủy float*/
+    .fntb,
+    .fntablet,
+    .fnTablet{float:none}
+
+    .fntb-im,
+    .fntablet-im,
+    .fnTablet-im{float:none !important}
+
+    .fltb,
+    .fltablet,
+    .flTablet{float:left}
+    
+    /*Text-align*/
+    .tactb,
+    .tactablet,
+    .tacTablet{text-align:center}
+    .taltb,
+    .taltablet,
+    .talTablet{text-align:left}
+    .tartb,
+    .tartablet,
+    .tarTablet{text-align:left}
+
+    /*Margin, padding 0*/
+    .motb,
+    .motablet,
+    .moTablet{margin:0}
+    .motb-im,
+    .motablet-im,
+    .moTablet-im{margin:0 !important}
+
+    .matb,
+    .matablet,
+    .maTablet{margin:auto}
+    .matb-im,
+    .matablet-im,
+    .maTablet-im{margin:auto !important}
+
+    .potb,
+    .potablet,
+    .poTablet{padding:0}
+    .potb-im,
+    .potablet-im,
+    .poTablet-im{padding:0 !important}
+
+
+    /*Height auto*/
+    .hautotb,
+    .hautotablet,
+    .hautoTablet{height:auto}
+    .hautotb-im,
+    .hautotablet-im,
+    .hautoTablet-im{height:auto !important}
+
+    /*Làm viền trái, phải thay margin*/
+    .b10tb-bd0mb:nth-child(odd){border-right:solid 10px rgba(0,0,0,0);clear:left}
+    .b10tb-bd0mb:nth-child(even){border-left:solid 10px rgba(0,0,0,0);clear:right}
+
+    .b20tb-bd0mb:nth-child(odd){border-right:solid 20px rgba(0,0,0,0);clear:left}
+    .b20tb-bd0mb:nth-child(even){border-left:solid 20px rgba(0,0,0,0);clear:right}
+
+    .b40tb-bd0mb:nth-child(odd){border-right:solid 40px rgba(0,0,0,0);clear:left}
+    .b40tb-bd0mb:nth-child(even){border-left:solid 40px rgba(0,0,0,0);clear:right}
+
+    .bl20tb-bd0mb{border-left:solid 20px rgba(0,0,0,0)}
+
+    .pb10tb{padding-bottom:10px}
+    .pb20tb{padding-bottom:20px}
+    .pb30tb{padding-bottom:30px}
+
+    .pt10tb{padding-top:10px}
+    .pt20tb{padding-top:20px}
+    .pt30tb{padding-top:30px}
+
+    /*Khối bao tạo cách lề hai bên màn hình*/
+    .container{padding:0 20px !important;width:auto}
+
+    /*Các khối chia chiều rộng trên tablet - dựa theo bootstrap 100% width có thể chia 12 cột*/
+    .col-tb-1{width:8.3333%}
+    .col-tb-2{width:16.6667%}
+    .col-tb-3{width:25%}
+    .col-tb-4{width:33.3333%}
+    .col-tb-5{width:41.6667%}
+    .col-tb-6{width:50%}
+    .col-tb-7{width:58.3333%}
+    .col-tb-8{width:66.6667%}
+    .col-tb-9{width:75%}
+    .col-tb-10{width:83.3333%}
+    .col-tb-11{width:91.6667%}
+    .col-tb-12{width:100%}
+
+    /*Các khối chia chiều rộng trên tablet - dựa theo bootstrap 100% width có thể chia 12 cột - có thêm important*/
+    .col-tb-1-im{width:8.3333% !important}
+    .col-tb-2-im{width:16.6667% !important}
+    .col-tb-3-im{width:25% !important}
+    .col-tb-4-im{width:33.3333% !important}
+    .col-tb-5-im{width:41.6667% !important}
+    .col-tb-6-im{width:50% !important}
+    .col-tb-7-im{width:58.3333% !important}
+    .col-tb-8-im{width:66.6667% !important}
+    .col-tb-9-im{width:75% !important}
+    .col-tb-10-im{width:83.3333% !important}
+    .col-tb-11-im{width:91.6667% !important}
+    .col-tb-12-im{width:100% !important}
+
+    /*Các khối chia chiều rộng trên tablet - dựa theo bootstrap 100% width có thể chia 12 cột - có thêm margin 0 important*/
+    .col-tb-1-mo{width:8.3333%;margin:0 !important}
+    .col-tb-2-mo{width:16.6667%;margin:0 !important}
+    .col-tb-3-mo{width:25%;margin:0 !important}
+    .col-tb-4-mo{width:33.3333%;margin:0 !important}
+    .col-tb-5-mo{width:41.6667%;margin:0 !important}
+    .col-tb-6-mo{width:50%;margin:0 !important}
+    .col-tb-7-mo{width:58.3333%;margin:0 !important}
+    .col-tb-8-mo{width:66.6667%;margin:0 !important}
+    .col-tb-9-mo{width:75%;margin:0 !important}
+    .col-tb-10-mo{width:83.3333%;margin:0 !important}
+    .col-tb-11-mo{width:91.6667%;margin:0 !important}
+    .col-tb-12-mo{width:100%;margin:0 !important}
+
+    .w100o{width:100% !important;float:none !important;margin:0 !important}
+    .w100o-tb,
+    .w100otb,
+    .w100oTb{width:100% !important;float:none !important}
+}
+
+@media (max-width:767px){
+    /*Bắt đầu từ 480 tính tương ứng với trường hợp mobile quay ngang - thường là 2 cột*/
+    /*Xử lý cho các khối trên pc thì hiện, trên mobile thì ẩn hoặc ngược lại*/
+    .dnmobile-l,
+    .dnMobile-l,
+    .dnmb-l{display:none !important}
+    .dbmobile-l,
+    .dbMobile-l,
+    .dbmb-l{display:block !important}
+    .dibmobile-l,
+    .dibMobile-l,
+    .dibmb-l{display:inline-block}
+
+    /*Hủy float*/
+    .fnmb-l,
+    .fnmobile-l,
+    .fnMobile-l{float:none}
+
+    .fnmb-l-im,
+    .fnmobile-l-im,
+    .fnMobile-l-im{float:none !important}
+
+    .flmb-l,
+    .flmobile-l,
+    .flMobile-l{float:left}
+
+    /*Text-align*/
+    .tacmb-l,
+    .tacmobile-l,
+    .tacMobile-l{text-align:center}
+    .talmb-l,
+    .talmobile-l,
+    .talMobile-l{text-align:left}
+    .tarmb-l,
+    .tarmobile-l,
+    .tarMobile-l{text-align:right}
+
+    /*Margin, padding 0*/
+    .momb-l,
+    .momobile-l,
+    .moMobile-l{margin:0}
+    .momb-l-im,
+    .momobile-l-im,
+    .moMobile-l-im{margin:0 !important}
+
+    .mamb-l,
+    .mamobile-l,
+    .maMobile-l{margin:0}
+    .mamb-l-im,
+    .mamobile-l-im,
+    .maMobile-l-im{margin:0 !important}
+
+    .pomb-l,
+    .pomobile-l,
+    .poMobile-l{padding:0}
+    .pomb-l-im,
+    .pomobile-l-im,
+    .poMobile-l-im{padding:0 !important}
+
+    /*Height auto*/
+    .hautotb-l,
+    .hautotablet-l,
+    .hautoTablet-l{height:auto}
+    .hautotb-l-im,
+    .hautotablet-l-im,
+    .hautoTablet-l-im{height:auto !important}
+
+    .b10tb-l-bd0mb:nth-child(odd){border-right:0;clear:left}
+    .b10tb-l-bd0mb:nth-child(even){border-left:0;clear:right}
+
+    .b20tb-l-bd0mb:nth-child(odd){border-right:0;clear:left}
+    .b20tb-l-bd0mb:nth-child(even){border-left:0;clear:right}
+
+    .b40tb-l-bd0mb:nth-child(odd){border-right:0;clear:left}
+    .b40tb-l-bd0mb:nth-child(even){border-left:0;clear:right}
+
+    .b10mb-l:nth-child(odd){border-right:solid 10px rgba(0,0,0,0);clear:left}
+    .b10mb-l:nth-child(even){border-left:solid 10px rgba(0,0,0,0);clear:right}
+
+
+    .bl20tb-l-bd0mb{border-left:0}
+
+    .pb10mb-l{padding-bottom:10px}
+    .pb20mb-l{padding-bottom:20px}
+
+    /*Khối bao tạo cách lề hai bên màn hình*/
+    .container{padding:0 10px !important}
+
+    /*Các khối chia chiều rộng trên mobile - dựa theo bootstrap 100% width có thể chia 12 cột*/
+    .col-mb-l-1{width:8.3333%}
+    .col-mb-l-2{width:16.6667%}
+    .col-mb-l-3{width:25%}
+    .col-mb-l-4{width:33.3333%}
+    .col-mb-l-5{width:41.6667%}
+    .col-mb-l-6{width:50%}
+    .col-mb-l-7{width:58.3333%}
+    .col-mb-l-8{width:66.6667%}
+    .col-mb-l-9{width:75%}
+    .col-mb-l-10{width:83.3333%}
+    .col-mb-l-11{width:91.6667%}
+    .col-mb-l-12{width:100%}
+
+    /*Các khối chia chiều rộng trên mobile - dựa theo bootstrap 100% width có thể chia 12 cột - có thêm important*/
+    .col-mb-l-1-im{width:8.3333% !important}
+    .col-mb-l-2-im{width:16.6667% !important}
+    .col-mb-l-3-im{width:25% !important}
+    .col-mb-l-4-im{width:33.3333% !important}
+    .col-mb-l-5-im{width:41.6667% !important}
+    .col-mb-l-6-im{width:50% !important}
+    .col-mb-l-7-im{width:58.3333% !important}
+    .col-mb-l-8-im{width:66.6667% !important}
+    .col-mb-l-9-im{width:75% !important}
+    .col-mb-l-10-im{width:83.3333% !important}
+    .col-mb-l-11-im{width:91.6667% !important}
+    .col-mb-l-12-im{width:100% !important}
+
+    /*Các khối chia chiều rộng trên mobile - dựa theo bootstrap 100% width có thể chia 12 cột - có thêm margin 0 important*/
+    .col-mb-l-1-mo{width:8.3333%;margin:0 !important}
+    .col-mb-l-2-mo{width:16.6667%;margin:0 !important}
+    .col-mb-l-3-mo{width:25%;margin:0 !important}
+    .col-mb-l-4-mo{width:33.3333%;margin:0 !important}
+    .col-mb-l-5-mo{width:41.6667%;margin:0 !important}
+    .col-mb-l-6-mo{width:50%;margin:0 !important}
+    .col-mb-l-7-mo{width:58.3333%;margin:0 !important}
+    .col-mb-l-8-mo{width:66.6667%;margin:0 !important}
+    .col-mb-l-9-mo{width:75%;margin:0 !important}
+    .col-mb-l-10-mo{width:83.3333%;margin:0 !important}
+    .col-mb-l-11-mo{width:91.6667%;margin:0 !important}
+    .col-mb-l-12-mo{width:100%;margin:0 !important}
+
+    .w100o-mb-l,
+    .w100omb-l,
+    .w100oMb-l{width:100% !important;float:none !important}
+
+    .fs20mb-l{font-size:20px}
+    .fs20mb-l-im{font-size:20px !important}
+}
+
+@media (max-width:479px){
+    /*Bắt đầu từ mobile, tức css viết ngoài cùng là css cho trường hợp mobile dựng dọc - thường là 1 cột, padding left right 15px*/
+
+    /*Xử lý cho các khối trên pc thì hiện, trên mobile thì ẩn hoặc ngược lại*/
+    .dnmobile,
+    .dnMobile,
+    .dnmb{display:none !important}
+    .dbmobile,
+    .dbMobile,
+    .dbmb{display:block !important}
+    .dibmobile,
+    .dibMobile,
+    .dibmb{display:inline-block}
+
+    /*Hủy float*/
+    .fnmb,
+    .fnmobile,
+    .fnMobile{float:none}
+
+    .fnmb-im,
+    .fnmobile-im,
+    .fnMobile-im{float:none !important}
+
+    .flmb,
+    .flmobile,
+    .flMobile{float:left}
+
+    /*Text-align*/
+    .tacmb,
+    .tacmobile,
+    .tacMobile{text-align:center}
+    .talmb,
+    .talmobile,
+    .talMobile{text-align:left}
+    .tarmb,
+    .tarmobile,
+    .tarMobile{text-align:right}
+
+    /*Margin, padding 0*/
+    .momb,
+    .momobile,
+    .moMobile{margin:0}
+    .momb-im,
+    .momobile-im,
+    .moMobile-im{margin:0 !important}
+
+    .mamb,
+    .mamobile,
+    .maMobile{margin:0}
+    .mamb-im,
+    .mamobile-im,
+    .maMobile-im{margin:0 !important}
+
+    .pomb,
+    .pomobile,
+    .poMobile{padding:0}
+    .pomb-im,
+    .pomobile-im,
+    .poMobile-im{padding:0 !important}
+
+    /*Height auto*/
+    .hautotb,
+    .hautotablet,
+    .hautoTablet{height:auto}
+    .hautotb-im,
+    .hautotablet-im,
+    .hautoTablet-im{height:auto !important}
+
+    .b10tb-bd0mb:nth-child(odd){border-right:0;clear:left}
+    .b10tb-bd0mb:nth-child(even){border-left:0;clear:right}
+
+    .b20tb-bd0mb:nth-child(odd){border-right:0;clear:left}
+    .b20tb-bd0mb:nth-child(even){border-left:0;clear:right}
+
+    .b40tb-bd0mb:nth-child(odd){border-right:0;clear:left}
+    .b40tb-bd0mb:nth-child(even){border-left:0;clear:right}
+
+    .b10mb:nth-child(odd){border-right:solid 10px rgba(0,0,0,0);clear:left}
+    .b10mb:nth-child(even){border-left:solid 10px rgba(0,0,0,0);clear:right}
+
+
+    .bl20tb-bd0mb{border-left:0}
+
+    .pb10mb{padding-bottom:10px}
+    .pb20mb{padding-bottom:20px}
+
+    /*Khối bao tạo cách lề hai bên màn hình*/
+    .container{padding:0 10px !important}
+
+    /*Các khối chia chiều rộng trên mobile - dựa theo bootstrap 100% width có thể chia 12 cột*/
+    .col-mb-1{width:8.3333%}
+    .col-mb-2{width:16.6667%}
+    .col-mb-3{width:25%}
+    .col-mb-4{width:33.3333%}
+    .col-mb-5{width:41.6667%}
+    .col-mb-6{width:50%}
+    .col-mb-7{width:58.3333%}
+    .col-mb-8{width:66.6667%}
+    .col-mb-9{width:75%}
+    .col-mb-10{width:83.3333%}
+    .col-mb-11{width:91.6667%}
+    .col-mb-12{width:100%}
+
+    /*Các khối chia chiều rộng trên mobile - dựa theo bootstrap 100% width có thể chia 12 cột - có thêm important*/
+    .col-mb-1-im{width:8.3333% !important}
+    .col-mb-2-im{width:16.6667% !important}
+    .col-mb-3-im{width:25% !important}
+    .col-mb-4-im{width:33.3333% !important}
+    .col-mb-5-im{width:41.6667% !important}
+    .col-mb-6-im{width:50% !important}
+    .col-mb-7-im{width:58.3333% !important}
+    .col-mb-8-im{width:66.6667% !important}
+    .col-mb-9-im{width:75% !important}
+    .col-mb-10-im{width:83.3333% !important}
+    .col-mb-11-im{width:91.6667% !important}
+    .col-mb-12-im{width:100% !important}
+
+    /*Các khối chia chiều rộng trên mobile - dựa theo bootstrap 100% width có thể chia 12 cột - có thêm margin 0 important*/
+    .col-mb-1-mo{width:8.3333%;margin:0 !important}
+    .col-mb-2-mo{width:16.6667%;margin:0 !important}
+    .col-mb-3-mo{width:25%;margin:0 !important}
+    .col-mb-4-mo{width:33.3333%;margin:0 !important}
+    .col-mb-5-mo{width:41.6667%;margin:0 !important}
+    .col-mb-6-mo{width:50%;margin:0 !important}
+    .col-mb-7-mo{width:58.3333%;margin:0 !important}
+    .col-mb-8-mo{width:66.6667%;margin:0 !important}
+    .col-mb-9-mo{width:75%;margin:0 !important}
+    .col-mb-10-mo{width:83.3333%;margin:0 !important}
+    .col-mb-11-mo{width:91.6667%;margin:0 !important}
+    .col-mb-12-mo{width:100%;margin:0 !important}
+
+    .w100o-mb,
+    .w100omb,
+    .w100oMb{width:100% !important;float:none !important}
+
+    .fs20mb{font-size:20px}
+    .fs20mb-im{font-size:20px !important}
+}
+
+

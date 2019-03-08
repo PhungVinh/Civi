@@ -1,0 +1,122 @@
+﻿@import "header";
+@import "footer";
+body {
+    margin: 0 auto;
+    background-color: #fafafa;
+}
+
+p {
+    margin: 0;
+}
+
+
+/*Bander*/
+#Bander {
+    background: #00aeef;
+    color: #fff;
+    position: relative;
+    z-index: 1;
+
+    .top {
+        text-align: center;
+
+        img {
+            transform: rotate(180deg);
+            -webkit-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            padding-bottom: 45px;
+        }
+    }
+
+    .text1 {
+        color: #fff;
+        font: normal 40px 'RobotoBold';
+        text-align: center;
+        padding-top: 30px;
+    }
+
+    .text2 {
+        color: #fff;
+        font: normal 18px 'utm-avo';
+        text-align: center;
+        padding-bottom: 47px;
+    }
+
+    .item {
+        text-align: center;
+        padding-bottom: 30px;
+    }
+}
+/*end*/
+
+/*nội dung trang*/
+section {
+    .susText {
+        font: normal 35px 'RobotoBold';
+        color: #00aeef;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+    /*Wapper*/
+    #wapper {
+        background: #f4f4f4;
+
+        .conten {
+            padding-top: 150px;
+            padding-bottom:260px;
+
+            .form-group {
+                input {
+                    margin-top: 26px;
+                }
+            }
+
+            .form-check {
+                input {
+                }
+
+                .text2 {
+                    margin-left: 155px;
+                }
+
+                .text3 {
+                    margin-left: 180px;
+                }
+
+                samp {
+                    font: normal 14px 'utm-avo';
+                    color: #494949;
+
+                    span {
+                        font: normal 14px 'utm-avo';
+                        color: #00aeef;
+                    }
+                }
+            }
+
+            p {
+                font: normal 14px 'utm-avo';
+                padding-top: 20px;
+                padding-bottom: 20px;
+
+                samp {
+                }
+            }
+
+            button {
+                margin-top:65px;
+                width: 200px;
+                border-radius: 79px;
+                background: #00aeef;
+            }
+
+            .text1 {
+                font: normal 14px 'utm-avo';
+                padding-top: 10px;
+            }
+        }
+    }
+}
+/*end*/

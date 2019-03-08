@@ -1,0 +1,54 @@
+﻿body {
+}
+
+/*foooer*/
+footer {
+    background: #00aeef;
+    color: #fff;
+
+    .head {
+        font: bold 15px 'RobotoBold';
+        text-transform: uppercase;
+        margin-top: 27px;
+        margin-bottom: 13px;
+    }
+
+    .text {
+        font: normal 12px 'RobotoRegular';
+        line-height: 23px;
+    }
+
+    .support {
+        padding-left: 5px;
+
+        p {
+            font: normal 12px 'RobotoRegular';
+            padding-top: 7px;
+
+            span {
+                font: normal 12px 'RobotoBold';
+            }
+
+            .Hotline {
+                padding-left: 45px;
+            }
+
+            .KyThuat {
+                padding-left: 33px;
+            }
+
+            .Email {
+                padding-left: 55px;
+            }
+        }
+    }
+
+    .Copyright {
+        margin-top: 45px;
+
+        p {
+            font: normal 12px 'RobotoRegular';
+            margin-bottom: 25px;
+        }
+    }
+}
